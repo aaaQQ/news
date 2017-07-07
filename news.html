@@ -63,13 +63,13 @@
 
 	<div class="tabs" ng-controller="myCtrl">
 		<nav>
-			<a href="javascript:;" ng-class="{active:true}">国内新闻</a>
-			<a href="javascript:;">国际新闻</a>
-			<a href="javascript:;">体育新闻</a>
-			<a href="javascript:;">娱乐新闻</a>
+			<a href="javascript:;" ng-class="{active:news_id==1}" ng-click="switch(1)">国内新闻</a>
+			<a href="javascript:;" ng-class="{active:news_id==2}" ng-click="switch(2)">国际新闻</a>
+			<a href="javascript:;" ng-class="{active:news_id==3}" ng-click="switch(3)">体育新闻</a>
+			<a href="javascript:;" ng-class="{active:news_id==4}" ng-click="switch(4)">娱乐新闻</a>
 		</nav>
-		<div>
-			<ol>
+		<div ng-switch="news_id">
+			<ol ng-switch-when="1">
 				<li>河南再次发生矿难，死伤人数超砖石ddddddddddddd过100dddads</li>
 				<li>禽流感在全国物农延，温家宝指示</li>
 				<li>南方大旱，农作物减产绝收面积上亩</li>
@@ -77,7 +77,7 @@
 				<li>禽流感在全农作物继续蔓延，温家宝指示</li>
 				<li>猪流感在广东群体性暴发</li>
 			</ol>
-			<ol>
+			<ol ng-switch-when="2">
 				<li>河感在生矿难，死伤在全10</li>
 				<li>禽流感在感在广1处继续蔓延，温家宝指示</li>
 				<li>南方大旱，农作物减产绝收面积上亩</li>
@@ -86,7 +86,7 @@
 				<li>南方大旱，农作物减产绝收面积上亩</li>
 				<li>猪流感在广东群体性暴发</li>
 			</ol>
-			<ol>
+			<ol ng-switch-when="3">
 				<li>河南再次发生矿难，死伤人数超过100</li>
 				<li>禽流感在全国多处农作物农延，温家宝指示</li>
 				<li>南方大旱，农作物减产绝收面积上亩</li>
@@ -95,7 +95,7 @@
 				<li>南方大农作物减产绝收面积上亩</li>
 				<li>猪流感在广东群体性暴发</li>
 			</ol>
-			<ol>
+			<ol ng-switch-when="4">
 				<li>河南再次发生矿难，死伤人数超过100</li>
 				<li>禽流感次发生蔓延，温家宝指示</li>
 				<li>南方大旱，农作物减产绝收面积上亩</li>
@@ -107,11 +107,14 @@
     </div>
     
 </body>
-<script src=""></script>
+<script src="bower_components/angular/angular.min.js"></script>
 <script>
 	var app = angular.module("Tabs",[]);
 	app.controller("myCtrl",["$scope",function($scope){
-		
-	}])
+		$scope.switch = function(news_id){
+			console.log(news_id);
+			$scope.news_id = news_id;
+		}
+	}]);
 </script>
 </html>
